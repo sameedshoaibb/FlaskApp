@@ -1,3 +1,3 @@
 # FlaskApp with a Package structure
 
-It has CRUD functionality
+It has CRUD functionality.
