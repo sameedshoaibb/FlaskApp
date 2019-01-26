@@ -1,0 +1,55 @@
+from main_app import db
+db.create_all()
+from main_app import User, Post
+user_131=User(username='nabeela', email='poka', password='pas')
+db.session.add(user_131)
+User.query.all()
+db.session.commit()
+
+
+<final>
+
+from main_app import User,db,Post
+User.query.all()
+user_38=User(username='Huma72', email='c7@gm1sail.com', password='p1as7s')
+db.session.add(user_38)
+User.query.all()
+db.session.commit()
+db.session.close()
+
+User.query.first()
+User.query.filter_by(username='').all()
+user=User.query.filter_by(username='').first()
+user
+user.id
+user=User.query.get(1)
+user
+
+user.id
+post_3=Post(title='Blog3',content='First Post',user_id=user.id)
+post_4=Post(title='Blog4',content='Second Post',user_id=user.id)
+db.session.add(post_3)
+db.session.add(post_4)
+db.session.commit()
+user.posts
+
+#How to delete a record from databse
+user=User.query.filter_by(username='').first()
+db.session.delete(user)
+user.id
+
+
+
+#hash the password using bcrypt-flask
+pip install flask-bcrypt
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt()
+bcrypt.generate_password_hash('testing') #hash the password
+bcrypt.generate_password_hash('testing').decode('utf-8') #if you want string instead of byte,you can decode into utf-8
+#hashing the same password will create differet hash each time
+hashed_pw=bcrypt.generate_password_hash('testing')
+bcrypt.check_password_hash(hashed_pw,'testing') # if need to compare the passwords in hash
+
+
+# To configure flask login system
+pip install flask-login
